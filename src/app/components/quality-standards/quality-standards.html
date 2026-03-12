@@ -1,0 +1,41 @@
+<section class="qs-section" #section>
+    <div class="qs-content">
+
+        <!-- Left Column: Titles -->
+        <div class="qs-left">
+            @for (item of standards; track item.id; let i = $index) {
+            <div class="qs-title-item" [attr.data-id]="item.id">
+                <h3 class="angel-wish">{{ item.title }}</h3>
+            </div>
+            }
+        </div>
+
+        <!-- Center Column: Image and Numbers -->
+        <div class="qs-center">
+            <div class="qs-visual-container" #visualContainer>
+                <!-- Backgrounds -->
+                @for (item of standards; track item.id) {
+                <div class="qs-bg-image" [style.backgroundImage]="'url(' + item.imageUrl + ')'"></div>
+                }
+
+                <div class="qs-numbers-mask">
+                    <div class="qs-numbers-wrapper" #numbersWrapper>
+                        @for (item of standards; track item.id; let i = $index) {
+                        <div class="qs-number angel-wish" [attr.data-id]="item.id"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Descriptions -->
+        <div class="qs-right">
+            @for (item of standards; track item.id; let i = $index) {
+            <div class="qs-desc-item" [attr.data-id]="item.id">
+                <p>{{ item.description }}</p>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>

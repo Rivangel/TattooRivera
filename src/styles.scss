@@ -1,1 +1,22 @@
+/* src/styles.scss */
+@font-face {
+    font-family: 'AngelWish';
+    /* Nombre exacto que usaremos */
+    src: url('./assets/fonts/Angel wish.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    /* Un verde bosque extremadamente oscuro y elegante */
+    background-color: #000000;
+    /* Asegura que todo el texto por defecto sea legible */
+    color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    /* O la que uses para cuerpo */
+}
+
 /* You can add global styles to this file, and also import other style files */

@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@300;400&display=swap');
+
+.angel-wish {
+    font-family: 'Angel Wish', 'UnifrakturMaguntia', cursive;
+}
+
+.qs-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #030805; // Deep matte black matching loader/header base
+    overflow: hidden;
+    color: #bfbfbf;
+    font-family: 'Inter', sans-serif;
+}
+
+.qs-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // Victorian industrial background subtle texture
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23030805"/><path d="M0 0L4 4M4 0L0 4" stroke="%2306120b" stroke-width="1"/></svg>');
+    z-index: 1;
+    pointer-events: none;
+}
+
+.qs-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 2;
+}
+
+// Global layout for columns
+.qs-left,
+.qs-right {
+    flex: 1;
+    position: relative;
+    height: 100%;
+}
+
+.qs-center {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+// Elements in columns
+.qs-title-item,
+.qs-desc-item {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    // Invisible initially to be animated by GSAP
+    visibility: hidden;
+}
+
+.qs-title-item {
+    h3 {
+        font-size: 3.5rem;
+        margin: 0;
+        color: #f2f2f2;
+        text-transform: capitalize;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        font-weight: normal;
+    }
+}
+
+.qs-desc-item {
+    p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: #a3a3a3;
+        margin: 0;
+        padding-left: 1rem;
+        border-left: 2px solid rgba(138, 10, 25, 0.4); // Crimson subtle accent
+    }
+}
+
+// Center Container Magic
+.qs-visual-container {
+    position: relative;
+    width: 400px;
+    height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.qs-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(85%) contrast(130%) brightness(0.6);
+    opacity: 0; // Handled by gsap
+}
+
+.qs-numbers-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 5;
+    // Fading gradient on top and bottom of the container
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+
+.qs-numbers-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400%; // 4 items (100% per item relative to the 520px parent height)
+    display: flex;
+    flex-direction: column;
+}
+
+.qs-number {
+    flex: 1; // takes 1/4 of 400% height = 100% of parent height (520px) per number
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14rem;
+    font-weight: normal;
+    margin: 0;
+
+    // Starting values (GSAP will override inside TS)
+    color: transparent;
+    -webkit-text-stroke: 2px #333;
+    text-shadow: none;
+    opacity: 0.3;
+}

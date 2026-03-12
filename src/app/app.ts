@@ -1,9 +1,16 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Header } from './components/header/header';
+import { QualityStandards } from './components/quality-standards/quality-standards';
+import { Portfolio } from './components/portfolio/portfolio';
+import { Faq } from './components/faq/faq';
+import { Footer } from './components/footer/footer';
+import { Tattoos } from './components/tattoos/tattoos';
+import { Loader } from './components/loader/loader';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Header, QualityStandards, Tattoos, Faq, Footer, Portfolio, Loader],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
