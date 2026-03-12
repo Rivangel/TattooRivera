@@ -7,10 +7,11 @@ import { Faq } from './components/faq/faq';
 import { Footer } from './components/footer/footer';
 import { Tattoos } from './components/tattoos/tattoos';
 import { Loader } from './components/loader/loader';
+import { Hero } from './components/hero/hero';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, QualityStandards, Tattoos, Faq, Footer, Portfolio, Loader],
+  imports: [RouterOutlet, Header, QualityStandards, Tattoos, Faq, Footer, Portfolio, Loader, Hero],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

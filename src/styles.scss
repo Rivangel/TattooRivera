@@ -1,8 +1,10 @@
 /* src/styles.scss */
+@import 'variables';
+
 @font-face {
     font-family: 'AngelWish';
     /* Nombre exacto que usaremos */
-    src: url('./assets/fonts/Angel wish.ttf') format('truetype');
+    src: url('/fonts/Angel wish.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,12 +13,9 @@ html,
 body {
     height: 100%;
     margin: 0;
-    /* Un verde bosque extremadamente oscuro y elegante */
-    background-color: #000000;
-    /* Asegura que todo el texto por defecto sea legible */
-    color: #e0e0e0;
+    @include background-dark();
+    @include text-light();
     font-family: 'Montserrat', sans-serif;
-    /* O la que uses para cuerpo */
 }
 
 /* You can add global styles to this file, and also import other style files */

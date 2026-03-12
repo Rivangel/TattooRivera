@@ -47,9 +47,9 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
     {
       id: 'step4',
       number: '04',
-      title: 'Arte Original',
-      description: 'Cada pieza creada en Rivera Tattoo es un diseño único y a medida.',
-      imageUrl: 'images/tattoo4.jpeg'
+      title: 'Reconocimientos',
+      description: 'Reconocimientos por parte de la industria del tatuaje.',
+      imageUrl: 'images/Reconocimiento.jpeg'
     }
   ];
 
@@ -87,8 +87,8 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
       opacity: 0.3
     });
     gsap.set(numbers[0], {
-      color: '#8a0a19',
-      webkitTextStroke: '0px #8a0a19',
+      color: '#F16405',
+      webkitTextStroke: '0px #F16405',
       opacity: 1
     });
 
@@ -125,8 +125,8 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
         .to(descs[i + 1], { autoAlpha: 1, y: 0, duration: 1 }, label)
         .to(bgs[i + 1], { opacity: 1, duration: 1 }, label)
         .to(numbers[i + 1], {
-          color: '#8a0a19',
-          webkitTextStroke: '0px #8a0a19',
+          color: '#F16405',
+          webkitTextStroke: '0px #F16405',
           opacity: 1,
           duration: 1
         }, label);

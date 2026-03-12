@@ -1,67 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+@import '../../../variables';
 
-/* Asegúrate de que el nombre coincida con tu @font-face global */
 .tattoo-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
-  background-color: #000000; // Negro puro para el fondo gótico
-  border-bottom: 1px solid #1a1a1a; // Borde casi imperceptible
+  padding: 0.5rem 4rem;
+  // Uso del mixin de background con transparencia
+  background-color: rgba($color-bg-dark, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba($color-text-light, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
-  position: relative;
-  z-index: 10;
+  z-index: 1000;
+  box-sizing: border-box;
 
-  .header-left,
-  .header-right {
+  .header-left {
     flex: 1;
-    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
   }
 
   .header-right {
-    text-align: right;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .header-center {
     flex: 2;
     text-align: center;
-    z-index: 1;
   }
 
   .nav-link,
   .nav-contact {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 300;
-    letter-spacing: 0.25em;
-    color: #555; // Gris oscuro para no distraer
+    letter-spacing: 0.3em;
+    @include text-light(); // Mixin aplicado
+    text-transform: uppercase;
     text-decoration: none;
     transition: all 0.4s ease;
+    opacity: 0.8;
 
     &:hover {
-      color: #e0e0e0; // Resalta sutilmente al pasar el mouse
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      opacity: 1;
+      @include text-primary(); // Mixin aplicado para el hover
+      text-shadow: 0 0 10px rgba($color-primary, 0.5);
     }
   }
 
   .logo-text {
-    /* Aplicación de la fuente Angel Wish */
     font-family: 'AngelWish', serif;
-    font-size: 3.2rem; // Tamaño imponente
+    font-size: 3.2rem;
     font-weight: normal;
     margin: 0;
-    color: #f5f5f5; // Blanco hueso para alta legibilidad gótica
+    color: $color-primary;
     letter-spacing: 0.02em;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.02); // Efecto sutil de presencia
+      transform: scale(1.02);
+      @include text-accent(); // Un pequeño detalle de cambio al pasar el mouse
     }
   }
 }
 
-// Ajuste para móviles
 @media (max-width: 768px) {
   .tattoo-header {
     flex-direction: column;

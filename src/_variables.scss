@@ -1,0 +1,23 @@
+// --- Color Variables ---
+$color-bg-dark: #1A181B; // Background Principal / Dark
+$color-text-light: #F7F7F2; // Texto / Surface Light
+$color-primary: #F16405; // Primario / Branding
+$color-accent: #FFB400; // Acento / Warning
+$color-success: #03BB85; // Secundario / Success
+
+// --- Mixins ---
+@mixin background-dark() {
+    background-color: $color-bg-dark;
+}
+
+@mixin text-light() {
+    color: $color-text-light;
+}
+
+@mixin text-primary() {
+    color: $color-primary;
+}
+
+@mixin text-accent() {
+    color: $color-accent;
+}
