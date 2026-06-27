@@ -1,0 +1,118 @@
+@import '../../../variables';
+
+.angel-wish {
+    font-family: 'AngelWish', 'UnifrakturMaguntia', serif;
+}
+
+.about-section {
+    width: 100%;
+    @include background-dark();
+    @include text-light();
+    padding: 8rem 0;
+    overflow: hidden;
+}
+
+.about-wrapper {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Imagen */
+.about-media {
+    position: relative;
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(85%) contrast(130%) brightness(0.6);
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+/* Texto */
+.about-eyebrow {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    @include text-primary();
+    margin-bottom: 1.2rem;
+}
+
+.about-name {
+    font-size: clamp(3rem, 6vw, 5rem);
+    @include text-light();
+    margin: 0 0 1.8rem;
+    line-height: 1;
+}
+
+.about-bio {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    margin: 0 0 2.8rem;
+    max-width: 95%;
+}
+
+.about-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+
+    // Separador vertical entre stats
+    & + & {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 2rem;
+    }
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    color: $color-primary;
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(247, 247, 242, 0.5);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 5rem 0;
+    }
+
+    .about-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-bio {
+        max-width: 100%;
+    }
+
+    .about-stats {
+        gap: 1.8rem;
+    }
+}

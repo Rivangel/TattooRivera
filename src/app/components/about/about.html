@@ -1,0 +1,30 @@
+<section id="about" class="about-section" #section>
+    <div class="about-wrapper">
+
+        <!-- Izquierda: Imagen -->
+        <div class="about-media">
+            <div class="about-image" style="background-image: url('images/tattoo2.jpeg')"></div>
+        </div>
+
+        <!-- Derecha: Texto -->
+        <div class="about-content">
+            <span class="about-eyebrow">El Artista</span>
+            <h2 class="about-name angel-wish">Joachin</h2>
+            <p class="about-bio">
+                Desde Tierra Blanca, Veracruz, Joachin lleva 2 años perfeccionando su arte en la piel. Con más
+                de 100 tatuajes realizados, su trabajo refleja una pasión genuina por los trazos oscuros, el
+                detalle y la historia personal de cada cliente.
+            </p>
+
+            <div class="about-stats">
+                @for (stat of stats; track stat.label) {
+                <div class="stat-item">
+                    <span class="stat-value angel-wish">{{ stat.value }}</span>
+                    <span class="stat-label">{{ stat.label }}</span>
+                </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>

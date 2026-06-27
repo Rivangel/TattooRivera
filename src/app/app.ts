@@ -8,10 +8,12 @@ import { Footer } from './components/footer/footer';
 import { Tattoos } from './components/tattoos/tattoos';
 import { Loader } from './components/loader/loader';
 import { Hero } from './components/hero/hero';
+import { About } from './components/about/about';
+import { Booking } from './components/booking/booking';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, QualityStandards, Tattoos, Faq, Footer, Portfolio, Loader, Hero],
+  imports: [RouterOutlet, Header, QualityStandards, About, Tattoos, Faq, Booking, Footer, Portfolio, Loader, Hero],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
