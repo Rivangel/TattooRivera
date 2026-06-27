@@ -1,1 +1,21 @@
-<p>tattoos works!</p>
+<section id="tattoos" class="tattoos-section" #section>
+    <div class="tattoos-wrapper">
+
+        <header class="section-head">
+            <span class="section-eyebrow">Portfolio</span>
+            <h2 class="section-title angel-wish">Nuestra Galería</h2>
+        </header>
+
+        <div class="gallery-grid">
+            @for (item of gallery; track item.id) {
+            <article class="gallery-card">
+                <div class="card-image" [style.backgroundImage]="'url(' + item.image + ')'"></div>
+                <div class="card-overlay">
+                    <span class="card-style">{{ item.style }}</span>
+                </div>
+            </article>
+            }
+        </div>
+
+    </div>
+</section>
