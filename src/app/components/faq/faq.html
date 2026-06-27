@@ -1,1 +1,24 @@
-<p>faq works!</p>
+<section id="faq" class="faq-section">
+    <div class="faq-wrapper">
+
+        <header class="faq-head">
+            <span class="faq-eyebrow">Resuelve tus dudas</span>
+            <h2 class="faq-title angel-wish">Preguntas Frecuentes</h2>
+        </header>
+
+        <div class="faq-list">
+            @for (item of items; track item.question; let i = $index) {
+            <div class="faq-item" [class.active]="activeIndex === i">
+                <button class="faq-question" type="button" (click)="toggle(i)" [attr.aria-expanded]="activeIndex === i">
+                    <span class="q-text">{{ item.question }}</span>
+                    <span class="q-icon" #icon>+</span>
+                </button>
+                <div class="faq-answer" #panel>
+                    <p>{{ item.answer }}</p>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>
