@@ -97,39 +97,45 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: `+=${totalItems * 100}%`,
+        end: `+=${totalItems * 120}%`,
         pin: true,
         scrub: 1,
       }
     });
 
-    // 4. Animación iterativa 
+    // 4. Animación iterativa con zona muerta entre transiciones
     for (let i = 0; i < totalItems - 1; i++) {
-      const label = `step${i}`;
+      const outLabel = `out${i}`;
 
-      tl.to(titles[i], { autoAlpha: 0, y: -50, duration: 1 }, label)
-        .to(descs[i], { autoAlpha: 0, y: -50, duration: 1 }, label)
-        .to(bgs[i], { opacity: 0, duration: 1 }, label)
+      // SALIDA del item actual (dura 0.8 unidades)
+      tl.to(titles[i], { autoAlpha: 0, y: -40, duration: 0.8 }, outLabel)
+        .to(descs[i], { autoAlpha: 0, y: -40, duration: 0.8 }, outLabel)
+        .to(bgs[i], { opacity: 0, duration: 0.8 }, outLabel)
         .to(numbers[i], {
           color: 'transparent',
           webkitTextStroke: '2px #333',
           opacity: 0.3,
-          duration: 1
-        }, label)
+          duration: 0.8
+        }, outLabel)
         .to(this.numbersWrapperRef.nativeElement, {
-          yPercent: - ((i + 1) * (100 / totalItems)),
-          duration: 1,
-          ease: "power1.inOut"
-        }, label)
-        .to(titles[i + 1], { autoAlpha: 1, y: 0, duration: 1 }, label)
-        .to(descs[i + 1], { autoAlpha: 1, y: 0, duration: 1 }, label)
-        .to(bgs[i + 1], { opacity: 1, duration: 1 }, label)
+          yPercent: -((i + 1) * (100 / totalItems)),
+          duration: 0.8,
+          ease: 'power2.inOut'
+        }, outLabel)
+
+      // ZONA MUERTA de 0.4 unidades — nada visible durante este gap
+      // (el += encadena después del bloque anterior)
+
+      // ENTRADA del item siguiente (empieza después de la zona muerta)
+      tl.to(titles[i + 1], { autoAlpha: 1, y: 0, duration: 0.8 }, `+=${0.4}`)
+        .to(descs[i + 1], { autoAlpha: 1, y: 0, duration: 0.8 }, '<')
+        .to(bgs[i + 1], { opacity: 1, duration: 0.8 }, '<')
         .to(numbers[i + 1], {
           color: '#F16405',
           webkitTextStroke: '0px #F16405',
           opacity: 1,
-          duration: 1
-        }, label);
+          duration: 0.8
+        }, '<');
     }
   }
 
