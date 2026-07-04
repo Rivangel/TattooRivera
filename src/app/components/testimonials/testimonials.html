@@ -1,0 +1,27 @@
+@if (testimonials.length > 0) {
+<section id="testimonials" class="testimonials-section">
+    <div class="testimonials-wrapper">
+
+        <header class="section-head">
+            <span class="section-eyebrow">Clientes reales</span>
+            <h2 class="section-title angel-wish">Lo que dicen de nosotros</h2>
+        </header>
+
+        <div class="testimonials-grid">
+            @for (item of testimonials; track item.author) {
+            <article class="testimonial-card">
+                @if (item.image) {
+                <div class="testimonial-image" [style.backgroundImage]="'url(' + item.image + ')'"></div>
+                }
+                <blockquote class="testimonial-quote">“{{ item.quote }}”</blockquote>
+                <footer class="testimonial-meta">
+                    <span class="testimonial-author">{{ item.author }}</span>
+                    <span class="testimonial-detail">{{ item.detail }}</span>
+                </footer>
+            </article>
+            }
+        </div>
+
+    </div>
+</section>
+}

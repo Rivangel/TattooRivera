@@ -10,10 +10,11 @@ import { Loader } from './components/loader/loader';
 import { Hero } from './components/hero/hero';
 import { About } from './components/about/about';
 import { Booking } from './components/booking/booking';
+import { Testimonials } from './components/testimonials/testimonials';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, QualityStandards, About, Tattoos, Faq, Booking, Footer, Portfolio, Loader, Hero],
+  imports: [RouterOutlet, Header, QualityStandards, About, Tattoos, Testimonials, Faq, Booking, Footer, Portfolio, Loader, Hero],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
