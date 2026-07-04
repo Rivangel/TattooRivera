@@ -124,12 +124,49 @@
     }
 }
 
+.swipe-hint {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba($color-text-light, 0.45);
+    margin: 1.25rem 0 0;
+}
+
+// --- Mobile: carrusel horizontal con snap en lugar de 12 imágenes apiladas ---
 @media (max-width: 480px) {
     .tattoos-wrapper {
-        padding: 48px 20px;
+        padding: 48px 0;
+    }
+
+    .section-head {
+        padding: 0 20px;
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        // El padding lateral deja asomar la siguiente tarjeta: señal de que hay más
+        padding: 0 20px 12px;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .gallery-card {
+        flex: 0 0 74vw;
+        scroll-snap-align: center;
+    }
+
+    .swipe-hint {
+        display: block;
     }
 }

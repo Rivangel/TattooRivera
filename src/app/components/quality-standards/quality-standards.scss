@@ -29,6 +29,7 @@
 }
 
 .qs-content {
+    box-sizing: border-box; // el padding no debe sumar al width:100%
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -132,13 +133,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 400%; // 4 items (100% per item relative to the 520px parent height)
+    // La altura real (items * 100%) se asigna desde la plantilla según standards.length
     display: flex;
     flex-direction: column;
 }
 
 .qs-number {
-    flex: 1; // takes 1/4 of 400% height = 100% of parent height (520px) per number
+    flex: 1; // cada número ocupa el 100% de la altura del contenedor visual
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,4 +152,70 @@
     -webkit-text-stroke: 2px #333;
     text-shadow: none;
     opacity: 0.3;
+}
+
+// --- Mobile: las columnas laterales se apilan (título / visual / descripción) ---
+@media (max-width: 768px) {
+    .qs-section {
+        height: 100svh;
+        min-height: 580px;
+    }
+
+    .qs-content {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.25rem;
+        padding: 6rem 1.5rem 2rem; // deja libre el header fijo
+        text-align: center;
+    }
+
+    .qs-left,
+    .qs-right {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+    }
+
+    // Alturas fijas para que los items absolutos animados tengan caja de referencia
+    .qs-left {
+        height: 3rem;
+    }
+
+    .qs-right {
+        height: 7.5rem;
+    }
+
+    .qs-title-item,
+    .qs-desc-item {
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .qs-title-item h3 {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+    }
+
+    .qs-desc-item p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .qs-center {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+    }
+
+    .qs-visual-container {
+        width: min(68vw, 300px);
+        height: min(42svh, 380px);
+        border-radius: 14px;
+    }
+
+    .qs-number {
+        font-size: clamp(6rem, 30vw, 9rem);
+    }
 }

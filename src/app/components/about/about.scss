@@ -116,3 +116,18 @@
         gap: 1.8rem;
     }
 }
+
+@media (max-width: 480px) {
+    .about-stats {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+    }
+
+    .stat-item + .stat-item {
+        padding-left: 1.2rem;
+    }
+
+    .stat-value {
+        font-size: 1.9rem;
+    }
+}

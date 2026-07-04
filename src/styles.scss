@@ -16,6 +16,15 @@ body {
     @include background-dark();
     @include text-light();
     font-family: 'Montserrat', sans-serif;
+    // Red de seguridad: ninguna animación o elemento debe provocar scroll lateral
+    overflow-x: clip;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+    height: auto;
 }
 
 /* You can add global styles to this file, and also import other style files */

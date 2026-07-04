@@ -19,7 +19,7 @@
                 }
 
                 <div class="qs-numbers-mask">
-                    <div class="qs-numbers-wrapper" #numbersWrapper>
+                    <div class="qs-numbers-wrapper" #numbersWrapper [style.height.%]="standards.length * 100">
                         @for (item of standards; track item.id; let i = $index) {
                         <div class="qs-number angel-wish" [attr.data-id]="item.id"></div>
                         }

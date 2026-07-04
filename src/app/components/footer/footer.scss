@@ -54,6 +54,10 @@
 }
 
 .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px; // área táctil mínima
+    padding: 0 0.5rem;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 0.95rem;
@@ -89,6 +93,10 @@
 
 .social-link {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; // área táctil mínima
+    height: 44px;
     color: $color-text-light;
     transition: color 0.3s ease, transform 0.3s ease;
 

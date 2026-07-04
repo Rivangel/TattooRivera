@@ -4,6 +4,7 @@
 .hero-section {
     width: 100%;
     height: 100vh;
+    height: 100svh; // evita saltos por la barra de navegación en móvil
     @include background-dark();
     display: flex;
     align-items: center;
@@ -74,7 +75,7 @@
 }
 
 .ornate-text {
-    font-size: clamp(5rem, 12vw, 10rem);
+    font-size: clamp(3.2rem, 12vw, 10rem);
     @include text-primary();
     margin: 0;
     line-height: 0.5;
@@ -100,7 +101,7 @@
 .modern-text {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    font-size: clamp(6rem, 16vw, 14rem);
+    font-size: clamp(3.4rem, 16vw, 14rem);
     @include text-light();
     margin: 0;
     line-height: 0.85;
@@ -135,12 +136,27 @@
 }
 
 @media (max-width: 768px) {
+    .hero-section {
+        // El header móvil (logo + fila de links) es más alto que en desktop
+        padding-top: 120px;
+    }
+
     .floating-icon {
         display: none;
     }
 
     .ornate-text {
         padding-left: 0;
+        text-align: center;
+        line-height: 0.9; // menos solapamiento con TATTOO al estar centrado
+
+        &::before {
+            display: none;
+        }
+    }
+
+    .line-1 {
+        margin-top: -0.5rem;
         text-align: center;
     }
 
