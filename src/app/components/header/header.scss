@@ -28,6 +28,8 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .header-center {
@@ -37,10 +39,14 @@
 
   .nav-link,
   .nav-contact {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px; // área táctil mínima
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
     font-weight: 300;
     letter-spacing: 0.3em;
+    white-space: nowrap;
     @include text-light(); // Mixin aplicado
     text-transform: uppercase;
     text-decoration: none;
@@ -51,6 +57,29 @@
       opacity: 1;
       @include text-primary(); // Mixin aplicado para el hover
       text-shadow: 0 0 10px rgba($color-primary, 0.5);
+    }
+  }
+
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px; // área táctil mínima
+    padding: 0 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    color: $color-text-light;
+    background-color: $color-primary;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+      transform: translateY(-2px);
     }
   }
 
@@ -73,12 +102,45 @@
 
 @media (max-width: 768px) {
   .tattoo-header {
-    flex-direction: column;
-    padding: 2rem 1rem;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 1.25rem 0.6rem;
+    row-gap: 0.1rem;
+
+    // Logo arriba a lo ancho; links y CTA en una fila compacta debajo
+    .header-center {
+      flex: 1 1 100%;
+      order: -1;
+    }
 
     .logo-text {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
+
+    .header-left,
+    .header-right {
+      flex: 1 1 auto;
+    }
+
+    .header-right {
+      gap: 1rem;
+    }
+
+    .nav-link,
+    .nav-contact {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+    }
+
+    .header-cta {
+      font-size: 0.7rem;
+      padding: 0 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  // En pantallas muy chicas el CTA ya cubre el contacto: ocultamos el teléfono
+  .tattoo-header .nav-contact {
+    display: none;
   }
 }
