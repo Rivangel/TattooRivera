@@ -43,13 +43,6 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
       title: 'Curación Guiada',
       description: 'Proveemos parches dérmicos y guías detalladas de cuidados post-tatuaje.',
       imageUrl: 'images/tattoo3.jpeg'
-    },
-    {
-      id: 'step4',
-      number: '04',
-      title: 'Reconocimientos',
-      description: 'Reconocimientos por parte de la industria del tatuaje.',
-      imageUrl: 'images/Reconocimiento.jpeg'
     }
   ];
 
