@@ -1,0 +1,12 @@
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        @for (copy of copies; track copy) {
+        <div class="marquee-group">
+            @for (item of items; track item; let i = $index) {
+            <span class="marquee-item angel-wish" [class.outline]="i % 2 === 1">{{ item }}</span>
+            <span class="marquee-dot">✦</span>
+            }
+        </div>
+        }
+    </div>
+</div>

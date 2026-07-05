@@ -1,0 +1,62 @@
+@import '../../../variables';
+
+.angel-wish {
+    font-family: 'AngelWish', serif;
+    font-weight: normal;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: 1.1rem 0;
+    background-color: #151316;
+    border-top: 1px solid rgba($color-text-light, 0.06);
+    border-bottom: 1px solid rgba($color-text-light, 0.06);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+
+    .marquee:hover & {
+        animation-play-state: paused;
+    }
+}
+
+.marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-right: 3rem;
+}
+
+.marquee-item {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    color: $color-text-light;
+
+    &.outline {
+        color: transparent;
+        -webkit-text-stroke: 1px $color-primary;
+    }
+}
+
+.marquee-dot {
+    color: $color-primary;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}

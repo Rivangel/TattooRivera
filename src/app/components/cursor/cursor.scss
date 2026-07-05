@@ -1,0 +1,43 @@
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border-radius: 50%;
+    background: #fff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 9600; // encima del grano (9000), debajo de nada interactivo
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease;
+    will-change: transform;
+
+    &.on {
+        display: flex;
+    }
+
+    &.grow {
+        width: 84px;
+        height: 84px;
+        margin: -42px 0 0 -42px;
+    }
+}
+
+.cursor-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    .cursor-dot.grow & {
+        opacity: 1;
+    }
+}
