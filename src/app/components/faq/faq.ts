@@ -78,12 +78,13 @@ export class Faq implements AfterViewInit, OnDestroy {
   }
 
   private open(panel: ElementRef, icon: ElementRef) {
-    gsap.to(panel.nativeElement, { height: 'auto', autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
-    gsap.to(icon.nativeElement, { rotation: 45, duration: 0.4, ease: 'power2.out' });
+    gsap.to(panel.nativeElement, { height: 'auto', autoAlpha: 1, duration: 0.55, ease: 'expo.out' });
+    // El + rota 135° hasta volverse ×, con un pequeño rebote
+    gsap.to(icon.nativeElement, { rotation: 135, duration: 0.5, ease: 'back.out(1.6)' });
   }
 
   private close(panel: ElementRef, icon: ElementRef) {
-    gsap.to(panel.nativeElement, { height: 0, autoAlpha: 0, duration: 0.4, ease: 'power2.in' });
+    gsap.to(panel.nativeElement, { height: 0, autoAlpha: 0, duration: 0.45, ease: 'expo.inOut' });
     gsap.to(icon.nativeElement, { rotation: 0, duration: 0.4, ease: 'power2.in' });
   }
 

@@ -1,5 +1,5 @@
 <section id="booking" class="booking-section" #section
-    style="background-image: url('images/tattoo3.jpeg')">
+    style="background-image: url('images/tattoo3.webp')">
     <div class="booking-overlay"></div>
 
     <div class="booking-content">
@@ -9,8 +9,9 @@
 
         <div class="booking-actions">
             <a href="https://wa.me/522711052800?text=Hola%20Rivera%20Tattoo%2C%20quiero%20agendar%20una%20cita"
-                target="_blank" rel="noopener" class="btn btn-primary">WhatsApp</a>
-            <a href="#tattoos" class="btn btn-secondary" (click)="scrollToGallery($event)">Ver galería</a>
+                target="_blank" rel="noopener" class="btn btn-primary" appMagnetic data-cursor="IR">WhatsApp</a>
+            <a href="#tattoos" class="btn btn-secondary" data-cursor="VER"
+                (click)="scrollToGallery($event)">Ver galería</a>
         </div>
     </div>
 </section>

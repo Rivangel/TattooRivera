@@ -3,7 +3,7 @@
 
         <!-- Izquierda: Imagen -->
         <div class="about-media">
-            <div class="about-image" style="background-image: url('images/tattoo2.jpeg')"></div>
+            <div class="about-image" style="background-image: url('images/tattoo2.webp')"></div>
         </div>
 
         <!-- Derecha: Texto -->
@@ -19,7 +19,8 @@
             <div class="about-stats">
                 @for (stat of stats; track stat.label) {
                 <div class="stat-item">
-                    <span class="stat-value angel-wish">{{ stat.value }}</span>
+                    <span class="stat-value angel-wish" [attr.data-count]="stat.countTo"
+                        [attr.data-prefix]="stat.prefix" [attr.data-suffix]="stat.suffix">{{ stat.display }}</span>
                     <span class="stat-label">{{ stat.label }}</span>
                 </div>
                 }

@@ -39,19 +39,50 @@
     line-height: 1;
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+/* Río infinito: dos grupos idénticos desplazándose -50% en loop */
+.testimonials-marquee {
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: testi-scroll 35s linear infinite;
+
+    .testimonials-marquee:hover & {
+        animation-play-state: paused;
+    }
+}
+
+.marquee-group {
+    display: flex;
     gap: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 .testimonial-card {
+    width: 320px;
+    flex: 0 0 320px;
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 6px;
     overflow: hidden;
+}
+
+@keyframes testi-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+        width: auto;
+        flex-wrap: wrap;
+    }
 }
 
 .testimonial-image {

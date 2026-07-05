@@ -6,12 +6,13 @@
             <h2 class="section-title angel-wish">Nuestra Galería</h2>
         </header>
 
-        <div class="gallery-grid">
+        <div class="gallery-grid" data-cursor="DRAG">
             @for (item of gallery; track item.id) {
             <article class="gallery-card">
                 <div class="card-image" [style.backgroundImage]="'url(' + item.image + ')'"></div>
                 <div class="card-overlay">
-                    <span class="card-style">{{ item.style }}</span>
+                    <span class="card-title angel-wish">{{ item.title }}</span>
+                    <span class="card-zone">{{ item.zone }}</span>
                 </div>
             </article>
             }

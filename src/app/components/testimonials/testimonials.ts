@@ -4,7 +4,7 @@ interface Testimonial {
   quote: string;
   author: string;
   detail: string; // ej. 'Blackwork · Antebrazo'
-  image?: string; // foto del tatuaje terminado, ej. 'images/tattoo4.jpeg'
+  image?: string; // foto del tatuaje terminado, ej. 'images/tattoo4.webp'
 }
 
 @Component({
@@ -21,7 +21,10 @@ export class Testimonials {
   //   quote: 'Un trato increíble y un trazo limpísimo. Volveré por la segunda sesión.',
   //   author: 'María G.',
   //   detail: 'Blackwork · Antebrazo',
-  //   image: 'images/tattoo4.jpeg',
+  //   image: 'images/tattoo4.webp',
   // },
   testimonials: Testimonial[] = [];
+
+  // Dos copias del contenido: el marquee de -50% se reinicia sin costura
+  readonly copies = [0, 1];
 }

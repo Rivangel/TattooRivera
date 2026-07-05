@@ -1,5 +1,5 @@
 @if (!isHidden()) {
-<div class="loader-overlay" [class.fade-out]="isFadingOut()">
+<div class="loader-overlay" [class.leave]="isLeaving()">
     <div class="loader-centerpiece">
         <div class="iron-circle"></div>
 
@@ -43,5 +43,7 @@
     </div>
 
     <div class="loader-text">Rivera Tattoo</div>
+
+    <div class="loader-count" aria-hidden="true">{{ progress() }}</div>
 </div>
 }

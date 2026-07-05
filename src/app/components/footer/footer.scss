@@ -12,6 +12,27 @@
     padding: 4.5rem 0 0;
 }
 
+/* "Rivera" gigante: outline que se rellena de naranja al hover */
+.footer-giant-wrap {
+    text-align: center;
+    overflow: hidden;
+    padding: 1rem 0 3rem;
+}
+
+.footer-giant {
+    display: inline-block;
+    font-size: clamp(5rem, 18vw, 15rem);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(247, 247, 242, 0.35);
+    transition: color 0.6s ease, -webkit-text-stroke-color 0.6s ease;
+
+    &:hover {
+        color: $color-primary;
+        -webkit-text-stroke-color: $color-primary;
+    }
+}
+
 .footer-grid {
     width: 90%;
     max-width: 1400px;

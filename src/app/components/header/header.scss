@@ -10,13 +10,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 4rem;
-  // Uso del mixin de background con transparencia
-  background-color: rgba($color-bg-dark, 0.95);
+  // Sobre el hero flota transparente; al hacer scroll gana cuerpo (.scrolled)
+  background-color: rgba($color-bg-dark, 0.55);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba($color-text-light, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  box-shadow: none;
   z-index: 1000;
   box-sizing: border-box;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+
+  &.scrolled {
+    background-color: rgba($color-bg-dark, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  }
 
   .header-left {
     flex: 1;

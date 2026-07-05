@@ -1,12 +1,14 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Inject, PLATFORM_ID, inject } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { SmoothScroll } from '../../services/smooth-scroll';
+import { Magnetic } from '../../directives/magnetic';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Magnetic],
   templateUrl: './booking.html',
   styleUrl: './booking.scss',
 })
@@ -42,11 +44,12 @@ export class Booking implements AfterViewInit, OnDestroy {
     });
   }
 
+  private smoothScroll = inject(SmoothScroll);
+
   scrollToGallery(event: Event) {
     event.preventDefault();
     if (!isPlatformBrowser(this.platformId)) return;
-    const target = document.getElementById('tattoos');
-    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.smoothScroll.scrollTo('#tattoos');
   }
 
   ngOnDestroy() {

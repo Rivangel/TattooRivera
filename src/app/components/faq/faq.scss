@@ -75,6 +75,12 @@
     font-weight: 400;
     font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     letter-spacing: 0.01em;
+    transition: color 0.3s ease;
+
+    // La pregunta activa se tiñe del primario
+    .faq-item.active & {
+        color: $color-primary;
+    }
 }
 
 .q-icon {

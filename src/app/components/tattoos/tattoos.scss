@@ -69,7 +69,8 @@
             opacity: 1;
         }
 
-        .card-style {
+        .card-title,
+        .card-zone {
             transform: translateY(0);
             opacity: 1;
         }
@@ -89,23 +90,36 @@
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 0.25rem;
     padding: 1.5rem;
-    background: linear-gradient(to top, rgba(241, 100, 5, 0.55), rgba(241, 100, 5, 0.15) 60%, transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25) 55%, transparent);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.card-style {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+// Opción A: nombre propio de la pieza + zona del cuerpo
+.card-title {
+    font-size: 1.9rem;
+    line-height: 1;
     @include text-light();
     transform: translateY(15px);
     opacity: 0;
     transition: transform 0.5s ease 0.05s, opacity 0.5s ease 0.05s;
+}
+
+.card-zone {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: $color-primary;
+    transform: translateY(15px);
+    opacity: 0;
+    transition: transform 0.5s ease 0.12s, opacity 0.5s ease 0.12s;
 }
 
 @media (max-width: 768px) {
@@ -118,7 +132,8 @@
         background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 70%);
     }
 
-    .card-style {
+    .card-title,
+    .card-zone {
         transform: translateY(0);
         opacity: 1;
     }
@@ -134,6 +149,39 @@
     text-align: center;
     color: rgba($color-text-light, 0.45);
     margin: 1.25rem 0 0;
+}
+
+// --- Desktop: carrusel drag-to-scroll con inercia (GSAP Draggable) ---
+@media (min-width: 901px) {
+    .tattoos-wrapper {
+        max-width: none;
+        overflow: hidden;
+        padding: 60px 0;
+    }
+
+    .gallery-grid {
+        display: flex;
+        gap: 16px;
+        width: max-content;
+        padding: 0 40px;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    .gallery-card {
+        width: 320px;
+        flex: 0 0 320px;
+        // El drag no debe iniciar arrastre nativo de imágenes
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .swipe-hint {
+        display: block;
+    }
 }
 
 // --- Mobile: carrusel horizontal con snap en lugar de 12 imágenes apiladas ---

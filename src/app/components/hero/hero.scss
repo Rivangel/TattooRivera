@@ -98,22 +98,22 @@
     }
 }
 
+// Angel Wish también aquí: la fuente de la marca es protagonista total
 .modern-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: clamp(3.4rem, 16vw, 14rem);
+    font-family: 'AngelWish', serif;
+    font-weight: normal;
+    font-size: clamp(3.4rem, 15vw, 13rem);
     @include text-light();
     margin: 0;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
     z-index: 2;
     position: relative;
 }
 
 .line-1 {
     text-align: left;
-    margin-top: -2rem;
+    margin-top: -1rem;
 }
 
 .line-2-wrapper {
@@ -121,6 +121,17 @@
     align-items: center;
     gap: clamp(1rem, 3vw, 3rem);
     padding-left: 10%;
+}
+
+// "Studio" lleva una foto real del trabajo dentro de la tipografía
+.line-2 {
+    background-image: url('/images/tattoo9.webp');
+    background-size: cover;
+    background-position: center 25%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 .inline-image {

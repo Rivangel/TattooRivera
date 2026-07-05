@@ -28,21 +28,21 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
       number: '01',
       title: 'Higiene Clínica',
       description: 'Nuestros espacios son esterilizados bajo protocolos hospitalarios. Cada aguja es de un solo uso.',
-      imageUrl: 'images/tattoo1.jpeg'
+      imageUrl: 'images/tattoo1.webp'
     },
     {
       id: 'step2',
       number: '02',
       title: 'Tintas Premium',
       description: 'Solo utilizamos pigmentos veganos de la más alta calidad, testeados dermatológicamente.',
-      imageUrl: 'images/tattoo2.jpeg'
+      imageUrl: 'images/tattoo2.webp'
     },
     {
       id: 'step3',
       number: '03',
       title: 'Curación Guiada',
       description: 'Proveemos parches dérmicos y guías detalladas de cuidados post-tatuaje.',
-      imageUrl: 'images/tattoo3.jpeg'
+      imageUrl: 'images/tattoo3.webp'
     }
   ];
 
