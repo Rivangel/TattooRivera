@@ -27,7 +27,7 @@ export class SmoothScroll implements OnDestroy {
 
     this.zone.runOutsideAngular(() => {
       this.lenis = new Lenis({
-        duration: 1.1,
+        duration: 0.6,
         anchors: true, // los href="#seccion" siguen funcionando, ahora suaves
       });
       this.lenis.on('scroll', ScrollTrigger.update);
