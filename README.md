@@ -1,59 +1,37 @@
-# TattooRivera
+# Rivera Tattoo Studio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.14.
+Sitio web para **Rivera Tattoo Studio**, un estudio de tatuajes en Tierra Blanca, Veracruz (México): landing con portafolio de trabajos, reserva de citas por WhatsApp y una capa de animación construida sección por sección en vez de partir de una plantilla genérica.
 
-## Development server
+Proyecto real de cliente — diseño visual, arquitectura y animaciones desarrollados de punta a punta.
 
-To start a local development server, run:
+## Stack
 
-```bash
-ng serve
-```
+- **Angular 20** — standalone components, control flow nativo (`@for` / `@if`), SSR + hidratación (`@angular/ssr`, `provideClientHydration`)
+- **GSAP 3.14** — `ScrollTrigger` (pin, scrub, snap), `SplitText`, `Draggable` + `InertiaPlugin`
+- **Lenis** — scroll suave global sincronizado con GSAP
+- **SCSS** — sin frameworks de utilidades; sistema de diseño propio (variables, mixins, tipografía de marca)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Lo que tiene el sitio
 
-## Code scaffolding
+- **Loader con progreso real**: el contador combina la descarga real de las imágenes críticas del hero con un piso y techo de tiempo, para que nunca se sienta ni instantáneo ni eterno.
+- **Hero cinético**: la tipografía se revela carácter por carácter al entrar (`SplitText`) y se reorganiza con el scroll.
+- **Quality Standards**: sección fijada con scroll-scrub entre tres estándares del estudio; si el usuario suelta el scroll a mitad de una transición, un snap automático (`ScrollTrigger` sobre labels) la resuelve hacia el item más cercano en vez de dejarla a medias.
+- **Sistema de wayfinding**: cada sección lleva un folio numerado, un riel lateral fijo resalta en qué parte de la página estás, y un sello de tinta marca la costura entre secciones — pensado para que un sitio de una sola página no se sienta como una sola línea repetitiva.
+- **Galería drag-to-scroll**: carrusel horizontal con inercia (`Draggable` + `InertiaPlugin`) en desktop, scroll-snap nativo en móvil.
+- **Cursor a medida**: punto con `mix-blend-mode: difference` que crece y anuncia la acción (`VER`, `DRAG`, `IR`) sobre los elementos interactivos.
+- **Accesibilidad de movimiento**: las animaciones no esenciales respetan `prefers-reduced-motion`.
+- **Responsive real**, probado en mobile (galería, botones, header) y no solo en el inspector.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Arquitectura
 
-```bash
-ng generate component component-name
-```
+- Cada sección de la página (`hero`, `quality-standards`, `about`, `tattoos`, `testimonials`, `faq`, `booking`, `folio`, `section-rail`, `seam-stamp`...) es un componente standalone independiente, compuestos en `app.html` — nada de un único componente monolítico.
+- El trabajo dirigido por scroll (GSAP + Lenis) corre fuera de la zona de Angular (`NgZone.runOutsideAngular`) para no disparar change detection en cada frame.
+- SSR real con hidratación: el contenido crítico (texto, meta tags Open Graph) se renderiza en servidor; las animaciones se inicializan solo en cliente (`isPlatformBrowser`).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Desarrollo local
 
 ```bash
-ng test
+npm install
+ng serve      # http://localhost:4200
+ng build      # build de producción en dist/
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
