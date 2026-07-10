@@ -5,8 +5,10 @@
 }
 
 .testimonials-section {
+    position: relative;
     width: 100%;
-    @include background-dark();
+    // Distinto del negro de Galería, justo antes, para que la costura se lea
+    background-color: #151316;
     @include text-light();
     padding: 6rem 0;
 }

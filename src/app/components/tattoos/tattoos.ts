@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
+import { Folio } from '../folio/folio';
 
 interface TattooItem {
   id: string;
@@ -15,7 +16,7 @@ interface TattooItem {
 @Component({
   selector: 'app-tattoos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Folio],
   templateUrl: './tattoos.html',
   styleUrl: './tattoos.scss',
 })

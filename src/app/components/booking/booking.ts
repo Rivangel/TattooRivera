@@ -4,11 +4,12 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { SmoothScroll } from '../../services/smooth-scroll';
 import { Magnetic } from '../../directives/magnetic';
+import { Folio } from '../folio/folio';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule, Magnetic],
+  imports: [CommonModule, Magnetic, Folio],
   templateUrl: './booking.html',
   styleUrl: './booking.scss',
 })

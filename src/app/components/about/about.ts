@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Inject, PLA
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Folio } from '../folio/folio';
 
 interface Stat {
   display: string;   // valor final (lo que renderiza SSR y usuarios sin JS)
@@ -14,7 +15,7 @@ interface Stat {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Folio],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

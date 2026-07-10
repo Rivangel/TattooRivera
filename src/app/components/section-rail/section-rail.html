@@ -1,0 +1,8 @@
+<nav class="section-rail" aria-hidden="true">
+    @for (s of sections; track s.id) {
+    <div class="rail-dot" [class.active]="active() === s.id">
+        <span class="pt"></span>
+        <span class="lbl">{{ s.label }}</span>
+    </div>
+    }
+</nav>

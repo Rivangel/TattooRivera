@@ -1,0 +1,70 @@
+@import '../../../variables';
+
+.seam {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 1px;
+    background: rgba($color-text-light, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.seam-mark {
+    position: relative;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 1.5px solid $color-primary;
+    background: $color-bg-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transform: scale(2.4) rotate(-18deg);
+
+    span {
+        font: 600 0.56rem/1.15 $font-mono;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: $color-primary;
+    }
+
+    &.hit {
+        animation: seam-stamp-in 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) forwards;
+    }
+}
+
+@keyframes seam-stamp-in {
+    0% {
+        opacity: 0;
+        transform: scale(2.4) rotate(-18deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(-8deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .seam-mark {
+        width: 44px;
+        height: 44px;
+
+        span {
+            font-size: 0.48rem;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .seam-mark {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+}

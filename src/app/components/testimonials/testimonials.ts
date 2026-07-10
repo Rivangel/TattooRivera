@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Folio } from '../folio/folio';
 
 interface Testimonial {
   quote: string;
@@ -10,6 +11,7 @@ interface Testimonial {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
+  imports: [Folio],
   templateUrl: './testimonials.html',
   styleUrl: './testimonials.scss',
 })

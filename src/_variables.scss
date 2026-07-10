@@ -5,6 +5,11 @@ $color-primary: #F16405; // Primario / Branding
 $color-accent: #FFB400; // Acento / Warning
 $color-success: #03BB85; // Secundario / Success
 
+// --- Type ---
+// Usada por el "ritual de folio" (número + nombre de sección) y demás
+// microcopy tipo ficha/cuaderno de bitácora.
+$font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
 // --- Mixins ---
 @mixin background-dark() {
     background-color: $color-bg-dark;

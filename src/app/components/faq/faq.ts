@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, QueryList, ViewChildren, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
+import { Folio } from '../folio/folio';
 
 interface FaqItem {
   question: string;
@@ -10,7 +11,7 @@ interface FaqItem {
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Folio],
   templateUrl: './faq.html',
   styleUrl: './faq.scss',
 })

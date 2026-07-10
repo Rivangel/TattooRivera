@@ -12,12 +12,13 @@ import { Booking } from './components/booking/booking';
 import { Testimonials } from './components/testimonials/testimonials';
 import { Marquee } from './components/marquee/marquee';
 import { Cursor } from './components/cursor/cursor';
-import { Sculpture } from './components/sculpture/sculpture';
+import { SectionRail } from './components/section-rail/section-rail';
+import { SeamStamp } from './components/seam-stamp/seam-stamp';
 import { SmoothScroll } from './services/smooth-scroll';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, QualityStandards, About, Tattoos, Testimonials, Faq, Booking, Footer, Loader, Hero, Marquee, Cursor, Sculpture],
+  imports: [RouterOutlet, Header, QualityStandards, About, Tattoos, Testimonials, Faq, Booking, Footer, Loader, Hero, Marquee, Cursor, SectionRail, SeamStamp],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

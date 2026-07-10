@@ -5,8 +5,11 @@
 }
 
 .about-section {
+    position: relative;
     width: 100%;
-    @include background-dark();
+    // Tono propio (no el mismo negro que Quality Standards, justo antes):
+    // que la costura entre ambas secciones se note sin necesitar más que el fondo.
+    background-color: #1E1C1F;
     @include text-light();
     padding: 8rem 0;
     overflow: hidden;
