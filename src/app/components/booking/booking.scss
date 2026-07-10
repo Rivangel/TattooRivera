@@ -73,6 +73,9 @@
 }
 
 .btn {
+    // Con width:100% en móvil, sin esto el padding horizontal se sumaba
+    // al 100% y los botones se salían de la pantalla.
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
