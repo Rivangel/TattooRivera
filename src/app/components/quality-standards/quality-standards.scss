@@ -55,8 +55,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1.6rem;
     position: relative;
     height: 100%;
+}
+
+// Ledger evolution: no toca el timeline de scrub existente, solo lo acompaña
+.qs-ledger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.4rem;
+    align-self: center;
+}
+
+.qs-ledger-tick {
+    width: 2px;
+    height: 34px;
+    border-radius: 1px;
+    background: rgba($color-text-light, 0.15);
 }
 
 // Elements in columns
@@ -217,5 +234,10 @@
 
     .qs-number {
         font-size: clamp(6rem, 30vw, 9rem);
+    }
+
+    // El riel de folios pide espacio horizontal que no hay apilado en móvil
+    .qs-ledger {
+        display: none;
     }
 }

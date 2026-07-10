@@ -1,4 +1,5 @@
-<section class="qs-section" #section>
+<section id="quality-standards" class="qs-section" #section>
+    <app-folio num="02" name="Calidad" />
     <div class="qs-content">
 
         <!-- Left Column: Titles -->
@@ -25,6 +26,13 @@
                         }
                     </div>
                 </div>
+            </div>
+
+            <!-- Ledger evolution: riel de folios del propio timeline de scrub -->
+            <div class="qs-ledger" aria-hidden="true">
+                @for (item of standards; track item.id) {
+                <span class="qs-ledger-tick" [attr.data-id]="item.id"></span>
+                }
             </div>
         </div>
 

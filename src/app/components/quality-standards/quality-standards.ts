@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, Inject, PLA
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Folio } from '../folio/folio';
 
 interface QualityStandard {
   id: string;
@@ -14,7 +15,7 @@ interface QualityStandard {
 @Component({
   selector: 'app-quality-standards',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Folio],
   templateUrl: './quality-standards.html',
   styleUrl: './quality-standards.scss',
 })
@@ -62,6 +63,7 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
     const numbers = gsap.utils.toArray('.qs-number', section) as HTMLElement[];
     const bgs = gsap.utils.toArray('.qs-bg-image', section) as HTMLElement[];
     const descs = gsap.utils.toArray('.qs-desc-item', section) as HTMLElement[];
+    const ledgerTicks = gsap.utils.toArray('.qs-ledger-tick', section) as HTMLElement[];
 
     const totalItems = this.standards.length;
 
@@ -85,6 +87,11 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
       opacity: 1
     });
 
+    // 2b. Riel de folios ("ledger evolution"): el mismo timeline de scrub
+    // suma un tercer testigo del avance, además del número y el título.
+    gsap.set(ledgerTicks, { backgroundColor: 'rgba(247,247,242,0.15)' });
+    gsap.set(ledgerTicks[0], { backgroundColor: '#F16405' });
+
     // 3. Timeline principal con ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -92,9 +99,22 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
         start: 'top top',
         end: `+=${totalItems * 120}%`,
         pin: true,
-        scrub: 1,
+        scrub: 0.3,
+        // Si el scroll se suelta a medias de una transición (incluida la
+        // zona muerta), "snapea" al item completo más cercano en vez de
+        // dejar la sección a medio desvanecer.
+        snap: {
+          snapTo: 'labels',
+          duration: { min: 0.15, max: 0.55 },
+          delay: 0,
+          ease: 'power2.out',
+        },
       }
     });
+
+    // Cada label marca un item ya asentado (completamente visible): son
+    // los puntos válidos de reposo a los que el snap de arriba puede caer.
+    tl.addLabel('item0');
 
     // 4. Animación iterativa con zona muerta entre transiciones
     for (let i = 0; i < totalItems - 1; i++) {
@@ -110,6 +130,7 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
           opacity: 0.3,
           duration: 0.8
         }, outLabel)
+        .to(ledgerTicks[i], { backgroundColor: 'rgba(247,247,242,0.15)', duration: 0.8 }, outLabel)
         .to(this.numbersWrapperRef.nativeElement, {
           yPercent: -((i + 1) * (100 / totalItems)),
           duration: 0.8,
@@ -128,7 +149,10 @@ export class QualityStandards implements AfterViewInit, OnDestroy {
           webkitTextStroke: '0px #F16405',
           opacity: 1,
           duration: 0.8
-        }, '<');
+        }, '<')
+        .to(ledgerTicks[i + 1], { backgroundColor: '#F16405', duration: 0.8 }, '<');
+
+      tl.addLabel(`item${i + 1}`);
     }
   }
 
