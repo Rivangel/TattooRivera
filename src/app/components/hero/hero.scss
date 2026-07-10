@@ -35,31 +35,6 @@
     align-items: center;
 }
 
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.scroll-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: lowercase;
-    color: rgba(247, 247, 242, 0.4);
-    transform: rotate(-90deg);
-}
-
-.scroll-line {
-    width: 1px;
-    height: 40px;
-    background: rgba(241, 100, 5, 0.6);
-}
 
 .floating-icon {
     position: absolute;
@@ -85,17 +60,6 @@
     z-index: 3;
     text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.9);
 
-    // Línea decorativa horizontal detrás de "Rivera"
-    &::before {
-        content: '';
-        position: absolute;
-        left: -80px;
-        top: 50%;
-        width: 60px;
-        height: 1px;
-        background: $color-primary;
-        opacity: 0.5;
-    }
 }
 
 // Angel Wish también aquí: la fuente de la marca es protagonista total
@@ -111,75 +75,3 @@
     position: relative;
 }
 
-.line-1 {
-    text-align: left;
-    margin-top: -1rem;
-}
-
-.line-2-wrapper {
-    display: flex;
-    align-items: center;
-    gap: clamp(1rem, 3vw, 3rem);
-    padding-left: 10%;
-}
-
-// "Studio" lleva una foto real del trabajo dentro de la tipografía
-.line-2 {
-    background-image: url('/images/tattoo9.webp');
-    background-size: cover;
-    background-position: center 25%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-}
-
-.inline-image {
-    width: clamp(150px, 25vw, 350px);
-    height: clamp(80px, 12vw, 160px);
-    background-size: cover;
-    background-position: center 30%;
-    filter: grayscale(100%) contrast(1.2);
-    margin-top: 2rem;
-    border-radius: 4px;
-    border: 1px solid rgba(241, 100, 5, 0.2);
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        // El header móvil (logo + fila de links) es más alto que en desktop
-        padding-top: 120px;
-    }
-
-    .floating-icon {
-        display: none;
-    }
-
-    .ornate-text {
-        padding-left: 0;
-        text-align: center;
-        line-height: 0.9; // menos solapamiento con TATTOO al estar centrado
-
-        &::before {
-            display: none;
-        }
-    }
-
-    .line-1 {
-        margin-top: -0.5rem;
-        text-align: center;
-    }
-
-    .line-2-wrapper {
-        flex-direction: column;
-        padding-left: 0;
-        gap: 1rem;
-    }
-
-    .inline-image {
-        width: 100%;
-        height: 120px;
-        margin-top: 0;
-    }
-}

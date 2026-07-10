@@ -4,10 +4,12 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import { Intro } from '../../services/intro';
+import { Folio } from '../folio/folio';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
+  imports: [Folio],
   templateUrl: './hero.html',
   styleUrl: './hero.scss'
 })
