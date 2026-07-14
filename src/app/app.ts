@@ -1,4 +1,4 @@
-import { Component, signal, AfterViewInit, inject } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { QualityStandards } from './components/quality-standards/quality-standards';
@@ -14,7 +14,6 @@ import { Marquee } from './components/marquee/marquee';
 import { Cursor } from './components/cursor/cursor';
 import { SectionRail } from './components/section-rail/section-rail';
 import { SeamStamp } from './components/seam-stamp/seam-stamp';
-import { SmoothScroll } from './services/smooth-scroll';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +21,6 @@ import { SmoothScroll } from './services/smooth-scroll';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements AfterViewInit {
+export class App {
   protected readonly title = signal('TattooRivera');
-  private smoothScroll = inject(SmoothScroll);
-
-  ngAfterViewInit() {
-    this.smoothScroll.init();
-  }
 }

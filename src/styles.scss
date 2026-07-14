@@ -39,22 +39,23 @@ html.has-custom-cursor * {
     font-weight: normal;
 }
 
-/* --- Lenis (scroll suave) --- */
-html.lenis,
-html.lenis body {
-    height: auto;
+/* --- Scroll nativo suave ---
+   Sin librería de smooth-scroll: el navegador maneja la rueda/touchpad a
+   nivel del compositor (mejor latencia y fluidez en touchpad). Los anchors
+   href="#seccion" se animan solos con scroll-behavior. */
+html {
+    scroll-behavior: smooth;
 }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+/* Offset para el header fijo al saltar a una sección por ancla */
+section[id] {
+    scroll-margin-top: 5rem;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 /* --- Grano global: textura de tinta sobre todo el sitio --- */

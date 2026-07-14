@@ -30,8 +30,9 @@ export class SeamStamp implements AfterViewInit {
       return;
     }
 
-    // Fuera de la zona de Angular: igual que smooth-scroll.ts, para que no
-    // dependa de que la app alcance "estable" con los tickers de GSAP/Lenis corriendo.
+    // Fuera de la zona de Angular: los tickers perpetuos de GSAP (ScrollTrigger)
+    // mantienen la app "inestable", lo que interfiere con la entrega de callbacks
+    // de un observer nuevo si se crea dentro de la zona.
     this.zone.runOutsideAngular(() => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
