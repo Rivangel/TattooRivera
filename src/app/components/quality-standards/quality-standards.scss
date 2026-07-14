@@ -1,243 +1,236 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@300;400&display=swap');
 @import '../../../variables';
 
-
-.angel-wish {
-    font-family: 'Angel Wish', 'UnifrakturMaguntia', cursive;
-}
+// Sección 02 "Calidad" — El Sello de Taller.
+// Un certificado del estudio: entradas de bitácora que se sellan al entrar.
+// Sin pin ni scrub: flujo normal + reveal escalonado (ver .ts).
 
 .qs-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    @include background-dark(); // Deep matte black matching loader/header base
-    overflow: hidden;
+    position: relative; // ancla del folio absoluto
+    @include background-dark();
     color: $color-text-light;
-    font-family: 'Inter', sans-serif;
+    padding: clamp(5rem, 12vw, 9rem) 1.5rem clamp(4rem, 10vw, 7rem);
+    overflow: hidden;
+
+    // Halo cálido tenue, coherente con la identidad del estudio
+    background-image:
+        radial-gradient(900px 480px at 12% -10%, rgba($color-primary, 0.08), transparent 60%),
+        radial-gradient(700px 420px at 100% 0%, rgba($color-accent, 0.04), transparent 55%);
 }
 
-.qs-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // Victorian industrial background subtle texture
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%231a181b"/><path d="M0 0L4 4M4 0L0 4" stroke="%23333333" stroke-width="1"/></svg>');
-    z-index: 1;
-    pointer-events: none;
-}
-
-.qs-content {
-    box-sizing: border-box; // el padding no debe sumar al width:100%
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1400px;
-    height: 100%;
+// --- El certificado ---
+.qs-cert {
+    max-width: 760px;
     margin: 0 auto;
-    padding: 0 5%;
-    position: relative;
-    z-index: 2;
 }
 
-// Global layout for columns
-.qs-left,
-.qs-right {
-    flex: 1;
-    position: relative;
-    height: 100%;
+.qs-cert-head {
+    border-bottom: 1px solid rgba($color-text-light, 0.1);
+    padding-bottom: clamp(1.4rem, 4vw, 2rem);
+    margin-bottom: clamp(1rem, 3vw, 1.6rem);
 }
 
-.qs-center {
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.6rem;
-    position: relative;
-    height: 100%;
+.qs-eyebrow {
+    font: 400 0.7rem/1 $font-mono;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba($color-text-light, 0.42);
+    margin: 0 0 1rem;
 }
 
-// Ledger evolution: no toca el timeline de scrub existente, solo lo acompaña
-.qs-ledger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.4rem;
-    align-self: center;
-}
-
-.qs-ledger-tick {
-    width: 2px;
-    height: 34px;
-    border-radius: 1px;
-    background: rgba($color-text-light, 0.15);
-}
-
-// Elements in columns
-.qs-title-item,
-.qs-desc-item {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    // Invisible initially to be animated by GSAP
-    visibility: hidden;
-}
-
-.qs-title-item {
-    h3 {
-        font-size: 3.5rem;
-        margin: 0;
-        color: $color-text-light;
-        text-transform: capitalize;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-        font-weight: normal;
-    }
-}
-
-.qs-desc-item {
-    p {
-        font-size: 1.15rem;
-        line-height: 1.7;
-        color: rgba($color-text-light, 0.7);
-        margin: 0;
-        padding-left: 1rem;
-        border-left: 2px solid rgba($color-primary, 0.4); // Subtle accent
-    }
-}
-
-// Center Container Magic
-.qs-visual-container {
-    position: relative;
-    width: 400px;
-    height: 520px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.qs-bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(85%) contrast(130%) brightness(0.6);
-    opacity: 0; // Handled by gsap
-}
-
-.qs-numbers-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 5;
-    // Fading gradient on top and bottom of the container
-    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
-}
-
-.qs-numbers-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    // La altura real (items * 100%) se asigna desde la plantilla según standards.length
-    display: flex;
-    flex-direction: column;
-}
-
-.qs-number {
-    flex: 1; // cada número ocupa el 100% de la altura del contenedor visual
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14rem;
-    font-weight: normal;
+.qs-cert-title {
+    font-size: clamp(2.4rem, 8vw, 4.2rem);
+    line-height: 0.98;
     margin: 0;
-
-    // Starting values (GSAP will override inside TS)
-    color: transparent;
-    -webkit-text-stroke: 2px #333;
-    text-shadow: none;
-    opacity: 0.3;
+    color: $color-text-light;
+    text-wrap: balance;
 }
 
-// --- Mobile: las columnas laterales se apilan (título / visual / descripción) ---
-@media (max-width: 768px) {
-    .qs-section {
-        height: 100svh;
-        min-height: 580px;
-    }
+.qs-cert-meta {
+    font: 400 0.7rem/1 $font-mono;
+    letter-spacing: 0.2em;
+    color: rgba($color-text-light, 0.32);
+    margin: 1.1rem 0 0;
+}
 
-    .qs-content {
-        flex-direction: column;
-        justify-content: center;
-        gap: 1.25rem;
-        padding: 6rem 1.5rem 2rem; // deja libre el header fijo
-        text-align: center;
-    }
+// --- Entradas de la bitácora ---
+.qs-ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-    .qs-left,
-    .qs-right {
-        flex: 0 0 auto;
+.qs-entry {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(1rem, 3vw, 1.6rem);
+    align-items: center;
+    padding: clamp(1.4rem, 4vw, 1.9rem) 0;
+    border-bottom: 1px solid rgba($color-text-light, 0.06);
+    // Transiciones siempre definidas; el estado inicial lo arma .qs-anim
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.qs-entry-num {
+    align-self: start;
+    padding-top: 0.35rem;
+    font: 600 0.8rem/1 $font-mono;
+    letter-spacing: 0.1em;
+    color: $color-primary;
+}
+
+.qs-entry-name {
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    line-height: 1;
+    margin: 0;
+    color: $color-text-light;
+}
+
+.qs-entry-desc {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    line-height: 1.6;
+    color: rgba($color-text-light, 0.62);
+    margin: 0.55rem 0 0;
+    max-width: 46ch;
+}
+
+// El cuño de verificado
+.qs-stamp {
+    width: clamp(56px, 14vw, 78px);
+    height: clamp(56px, 14vw, 78px);
+    flex: none;
+    display: grid;
+    place-items: center;
+    color: $color-success;
+    transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.2, 1.5, 0.4, 1);
+
+    svg {
         width: 100%;
-        height: auto;
+        height: 100%;
+    }
+}
+
+// --- Firma ---
+.qs-cert-sign {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: clamp(1.6rem, 4vw, 2.4rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.qs-sign {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1;
+    color: $color-text-light;
+
+    small {
+        display: block;
+        font: 400 0.62rem/1 $font-mono;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba($color-text-light, 0.32);
+        margin-top: 0.45rem;
+    }
+}
+
+.qs-verified {
+    font: 400 0.68rem/1 $font-mono;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-success;
+    white-space: nowrap;
+}
+
+// ===========================================================
+//  Estado animado — solo cuando JS lo arma (.qs-anim).
+//  Sin JS el certificado se ve completo (contenido real).
+// ===========================================================
+.qs-cert.qs-anim:not(.is-sealed) {
+
+    .qs-entry {
+        opacity: 0;
+        transform: translateY(16px);
     }
 
-    // Alturas fijas para que los items absolutos animados tengan caja de referencia
-    .qs-left {
-        height: 3rem;
+    .qs-stamp {
+        opacity: 0;
+        transform: scale(1.5) rotate(-24deg);
     }
 
-    .qs-right {
-        height: 7.5rem;
+    .qs-cert-sign {
+        opacity: 0;
+        transform: translateY(8px);
     }
+}
 
-    .qs-title-item,
-    .qs-desc-item {
-        top: 0;
-        left: 0;
+// Reveal escalonado: cada entrada, y su cuño un poco después
+.qs-cert.is-sealed {
+
+    .qs-entry {
+        opacity: 1;
         transform: none;
     }
 
-    .qs-title-item h3 {
-        font-size: clamp(1.7rem, 8vw, 2.4rem);
+    .qs-stamp {
+        opacity: 0.92;
+        transform: scale(1) rotate(-9deg);
     }
 
-    .qs-desc-item p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        padding-left: 0;
-        border-left: none;
+    .qs-cert-sign {
+        opacity: 1;
+        transform: none;
     }
 
-    .qs-center {
-        flex: 0 0 auto;
-        width: 100%;
-        height: auto;
+    // Escalonado por posición (hasta 6 entradas)
+    @for $i from 1 through 6 {
+        .qs-entry:nth-child(#{$i}) {
+            transition-delay: #{($i - 1) * 0.5}s;
+        }
+
+        .qs-entry:nth-child(#{$i}) .qs-stamp {
+            transition-delay: #{($i - 1) * 0.5 + 0.26}s;
+        }
     }
 
-    .qs-visual-container {
-        width: min(68vw, 300px);
-        height: min(42svh, 380px);
-        border-radius: 14px;
+    .qs-cert-sign {
+        transition-delay: 1.7s;
+    }
+}
+
+// --- Móvil: el cuño se encoge y la entrada respira ---
+@media (max-width: 560px) {
+    .qs-entry {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "num  body"
+            "stamp stamp";
+        row-gap: 0.9rem;
     }
 
-    .qs-number {
-        font-size: clamp(6rem, 30vw, 9rem);
+    .qs-entry-num {
+        grid-area: num;
     }
 
-    // El riel de folios pide espacio horizontal que no hay apilado en móvil
-    .qs-ledger {
-        display: none;
+    .qs-entry-body {
+        grid-area: body;
+    }
+
+    .qs-stamp {
+        grid-area: stamp;
+        justify-self: end;
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .qs-entry,
+    .qs-stamp,
+    .qs-cert-sign {
+        transition: none !important;
+        transition-delay: 0s !important;
     }
 }

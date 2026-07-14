@@ -1,49 +1,38 @@
-<section id="quality-standards" class="qs-section" #section>
+<section id="quality-standards" class="qs-section">
     <app-folio num="02" name="Calidad" />
-    <div class="qs-content">
 
-        <!-- Left Column: Titles -->
-        <div class="qs-left">
-            @for (item of standards; track item.id; let i = $index) {
-            <div class="qs-title-item" [attr.data-id]="item.id">
-                <h3 class="angel-wish">{{ item.title }}</h3>
-            </div>
-            }
-        </div>
+    <div class="qs-cert" #cert>
 
-        <!-- Center Column: Image and Numbers -->
-        <div class="qs-center">
-            <div class="qs-visual-container" #visualContainer>
-                <!-- Backgrounds -->
-                @for (item of standards; track item.id) {
-                <div class="qs-bg-image" [style.backgroundImage]="'url(' + item.imageUrl + ')'"></div>
-                }
+        <header class="qs-cert-head">
+            <p class="qs-eyebrow">Registro de calidad</p>
+            <h2 class="qs-cert-title angel-wish">Nuestra palabra,<br>sellada.</h2>
+            <p class="qs-cert-meta">Exp. 02 · Rivera Tattoo · MMXXVI</p>
+        </header>
 
-                <div class="qs-numbers-mask">
-                    <div class="qs-numbers-wrapper" #numbersWrapper [style.height.%]="standards.length * 100">
-                        @for (item of standards; track item.id; let i = $index) {
-                        <div class="qs-number angel-wish" [attr.data-id]="item.id"></div>
-                        }
-                    </div>
+        <ol class="qs-ledger">
+            @for (item of standards; track item.id) {
+            <li class="qs-entry">
+                <span class="qs-entry-num">{{ item.number }}</span>
+                <div class="qs-entry-body">
+                    <h3 class="qs-entry-name angel-wish">{{ item.title }}</h3>
+                    <p class="qs-entry-desc">{{ item.description }}</p>
                 </div>
-            </div>
-
-            <!-- Ledger evolution: riel de folios del propio timeline de scrub -->
-            <div class="qs-ledger" aria-hidden="true">
-                @for (item of standards; track item.id) {
-                <span class="qs-ledger-tick" [attr.data-id]="item.id"></span>
-                }
-            </div>
-        </div>
-
-        <!-- Right Column: Descriptions -->
-        <div class="qs-right">
-            @for (item of standards; track item.id; let i = $index) {
-            <div class="qs-desc-item" [attr.data-id]="item.id">
-                <p>{{ item.description }}</p>
-            </div>
+                <span class="qs-stamp" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="2.5"
+                            stroke-dasharray="4 5" />
+                        <path d="M32 51l12 12 24-26" stroke="currentColor" stroke-width="5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </li>
             }
-        </div>
+        </ol>
+
+        <footer class="qs-cert-sign">
+            <span class="qs-sign angel-wish">Joachin<small>Firma del artista</small></span>
+            <span class="qs-verified">{{ standards.length }}/{{ standards.length }} verificados</span>
+        </footer>
 
     </div>
 </section>
